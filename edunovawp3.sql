@@ -1,72 +1,50 @@
 use master;
 go
-drop database if exists edunovawp3 ;
+drop database if exists tvrtka;
 go
--- ovo je komentar
-create database edunovawp3 collate Croatian_CI_AS;
+create database tvrtka;
 go
---drop database edunovawp3;
---use master
-use edunovawp3;
+use tvrtka;
 
-create table smjerovi(
-sifra int not null primary key identity(1,1),
-naziv varchar(50) not null,
-trajanje int null, --null se ne piše. Ako ne piše not null onda se podrazumjeva null
-cijena decimal(18,2), -- iako ništa ne piše je null
-vaucer bit
+create table zaposlenici(
+sifra	int	not null	primary key identity (1,1),
+ime		varchar(50)	not null,
+prezime	varchar(50)	not null,
+datum_rodenja	date,
+placa	decimal,
+invalid	bit
 );
 
-create table grupe(
-
-	sifra			int			not null primary key identity(1,1),
-	naziv			varchar(5)	not null,
-	smjer			int			not null,
-	datumpocetka	datetime,
-	maxpolaznika	int			not null,
-	predavac		int
-
+create table slike(
+sifra	int	not null	primary key identity (1,1),
+zaposlenik	int	not null,
+redni_broj	char,
+putanja	varchar(50)
 );
 
-
-create table polaznici(
-sifra int not null primary key identity(1,1),
-ime varchar(50) not null,
-prezime varchar(50) not null,
-email varchar(100),
-oib char(11),
-brojugovora varchar(10)
-);
-
-create table predavaci(
-sifra int not null primary key identity(1,1),
-ime varchar(50) not null,
-prezime varchar(50) not null,
-email varchar(100) not null,
-oib char(11),
-iban varchar(50)
-);
-
--- ako nešto pogriješim onda mogu obrisati tablicu pa ponovo kreirati
---drop table predavaci;
+alter table slike add foreign key (zaposlenik) references zaposlenici(sifra);
 
 
-create table clanovi(
-grupa int not null,
-polaznik int not null
-);
+select * from zaposlenici;
 
--- kreiranje vanjskih ključeva
-alter table grupe add foreign key (smjer) references smjerovi(sifra);
-alter table grupe add foreign key (predavac) references predavaci(sifra);
-
-alter table clanovi add foreign key (grupa) references grupe(sifra);
-alter table clanovi add foreign key (polaznik) references polaznici(sifra);
+insert into zaposlenici(ime, prezime, datum_rodenja,placa,invalid) values
+--1
+('Slaven','Poznic','1999-05-08 07:00:00',1500.00,0),
+--2
+('Dora', 'Devic','1995-09-12 8:00:00', 1200.00,1),
+--3
+('Natasa','Poznic','1977-04-23 06:00:00',1500.00,0);
 
 
+select * from slike;
 
-
-
+insert into slike(zaposlenik, redni_broj, putanja) values
+(1,1,'tttttt'),
+(1,2,'zzzzzz'),
+(2,1,'xxxxxx'),
+(2,2,'yyyyyy'),
+(3,1,'rrrrrr'),
+(3,2,'pppppp');
 
 
 

@@ -1,52 +1,73 @@
 use master;
+drop database if exists edunovawp3;
 go
-drop database if exists tvrtka;
+-- ovo je komentar
+create database edunovawp3;
 go
-create database tvrtka;
-go
-use tvrtka;
+--drop database edunovawp3;
+--use master
+use edunovawp3;
 
-create table zaposlenici(
-sifra	int	not null	primary key identity (1,1),
-ime		varchar(50)	not null,
-prezime	varchar(50)	not null,
-datum_rodenja	date,
-placa	decimal,
-invalid	bit
+create table smjerovi(
+sifra int not null primary key identity(1,1),
+naziv varchar(50) not null,
+trajanje int null, --null se ne pise. Ako ne pise not null onda se podrazumijeva
+cijena decimal(18,2), -- iako nista ne pise je null
+vaucer bit
 );
 
-create table slike(
-sifra	int	not null	primary key identity (1,1),
-zaposlenik	int	not null,
-redni_broj	char,
-putanja	varchar(50)
+create table grupe(
+
+	sifra			int			not null primary key identity(1,1),
+	naziv			varchar(5)	not null,
+	smjer			int			not null,
+	datumpocetka	datetime,
+	maxpolaznika	int			not null,
+	predavac		int
+
 );
 
-alter table slike add foreign key (zaposlenik) references zaposlenici(sifra);
+
+create table polaznici(
+sifra int not null primary key identity(1,1),
+ime varchar(50) not null,
+prezime varchar(50) not null,
+email varchar(100),
+oib char(11),
+brojugovora varchar(10)
+);
+
+create table predavaci(
+sifra int not null primary key identity(1,1),
+ime varchar(50) not null,
+prezime varchar(50) not null,
+email varchar(100) not null,
+oib char(11),
+iban varchar(50)
+);
+
+-- ako nešto pogriješim onda mogu obrisati tablicu pa ponovo kreirati
+--drop table predavaci;
 
 
-select * from zaposlenici;
-
-insert into zaposlenici(ime, prezime, datum_rodenja,placa,invalid) values
---1
-('Slaven','Poznic','1999-05-08 07:00:00',1500.00,0),
---2
-('Dora', 'Devic','1995-09-12 8:00:00', 1200.00,1),
---3
-('Natasa','Poznic','1977-04-23 06:00:00',1500.00,0);
+create table clanovi(
+grupa int not null,
+polaznik int not null
+);
 
 
-select * from slike;
+-- kreiranje vanjskih kljuceva
+alter table grupe add foreign key (smjer) references smjerovi(sifra);
+alter table grupe add foreign key (predavac) references predavaci(sifra);
 
-insert into slike(zaposlenik, redni_broj, putanja) values
-(1,1,'tttttt'),
-(1,2,'zzzzzz'),
-(2,1,'xxxxxx'),
-(2,2,'yyyyyy'),
-(3,1,'rrrrrr'),
-(3,2,'pppppp');
+alter table clanovi add foreign key (grupa) references grupe (sifra);
+alter table clanovi add foreign key (polaznik) references polaznici (sifra);
+
+--kuizfut
 
 
 
 
 
+
+ 

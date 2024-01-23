@@ -59,7 +59,23 @@ insert into korisnici(ime,prezime,email) values
 --3
 ('Matea','Matic','mmatic@gmail.com'),
 --4
-('Katarina','Katic','kkatic@gmail.com');
+('Katarina','Katic','kkatic@gmail.com'),
+--5
+('Josipa','Josic','jjosic@gmail.com'),
+--6
+('Petra','Petric','ppetric@gmail.com'),
+--7
+('Maja','Majic','mmajic@gmail.com'),
+--8
+('Tina','Tinic','ttinic@gmail.com'),
+--9
+('Ema','Emic','eemic@gmail.com'),
+--10
+('Ena','Enic','eenic@gmail.com');
+
+
+
+
 
 
 select * from usluge
@@ -73,5 +89,6 @@ insert into usluge(naziv,tip) values
 ('Trajni_lak','Ugradnja'),
 --4
 ('Trajni_lak','Nadopuna');
+
 
 

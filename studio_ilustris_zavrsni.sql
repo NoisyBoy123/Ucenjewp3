@@ -46,32 +46,32 @@ insert into djelatnici (ime,prezime) values
 --1
 ('Dora','Dević'),
 --2
-('Katarina','Kovacic');
+('Katarina','Kovacić');
 
 
 select * from korisnici
 
 insert into korisnici(ime,prezime,email) values
 --1
-('Ana','Anic','aanic@gmail.com'),
+('Ana','Anić','aanic@gmail.com'),
 --2
-('Iva','Ivic','iivic@gmail.com'),
+('Iva','Ivić','iivic@gmail.com'),
 --3
-('Matea','Matic','mmatic@gmail.com'),
+('Matea','Matić','mmatic@gmail.com'),
 --4
-('Katarina','Katic','kkatic@gmail.com'),
+('Katarina','Katić','kkatic@gmail.com'),
 --5
-('Josipa','Josic','jjosic@gmail.com'),
+('Josipa','Josić','jjosic@gmail.com'),
 --6
-('Petra','Petric','ppetric@gmail.com'),
+('Petra','Petrić','ppetric@gmail.com'),
 --7
-('Maja','Majic','mmajic@gmail.com'),
+('Maja','Majić','mmajic@gmail.com'),
 --8
-('Tina','Tinic','ttinic@gmail.com'),
+('Tina','Tinić','ttinic@gmail.com'),
 --9
-('Ema','Emic','eemic@gmail.com'),
+('Ema','Emić','eemic@gmail.com'),
 --10
-('Ena','Enic','eenic@gmail.com');
+('Ena','Enić','eenic@gmail.com');
 
 
 
@@ -86,9 +86,9 @@ insert into usluge(naziv,tip) values
 --2
 ('Gel','Nadopuna'),
 --3
-('Trajni_lak','Ugradnja'),
+('Trajni lak','Ugradnja'),
 --4
-('Trajni_lak','Nadopuna');
+('Trajni lak','Nadopuna');
 
 
 
